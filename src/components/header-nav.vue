@@ -58,7 +58,7 @@
 												<div class="cart-item js-cart-item cart-item-sell">
 													<div class="cart-item-inner">
 														<div class="item-thumb">
-															<!--<img src="./img/goods/1.png">-->
+															<img src="../assets/img/goods/1.png">
 														</div>
 														<div class="item-desc">
 															<div class="cart-cell">

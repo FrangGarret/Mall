@@ -53,6 +53,9 @@ module.exports = {
   	"block-spacing":0,
   	"eqeqeq":0,
   	'no-multi-spaces':0,
-  	"no-unused-expressions":0
+  	"no-unused-expressions":0,
+  	"object-property-newline":0,
+  	"eslint-disable-next-line":0,
+  	"eslint-disable":0
   }
 }
