@@ -23,11 +23,13 @@
 				</div>
 			</div>
 		</div>
+		<prompt></prompt>
 	</div>
 
 </template>
 
 <script>
+	import prompt from '@/components/prompt.vue'
 	import goodData from '@/assets/js/newGoodsData.js';
 	import shopItem from '@/components/shop-item.vue'
 	export default {
@@ -37,7 +39,8 @@
 			}
 		},
 		components:{
-			shopItem
+			shopItem,
+			prompt
 		}
 	}
 </script>
