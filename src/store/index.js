@@ -7,7 +7,13 @@ let store = new Vuex.Store({
 		carPanelData: [],
 		maxOff:false,//模态框是否显示
 		carShow:false,//购物车详情弹出框是否显示
-		carTimer:null
+		carTimer:null,
+		ball:{//创建点击加入购物车的小球飞入购物车的效果
+			show:false,
+			el:null,
+			img_src:null
+
+		}
 	},
 	getters:{
 		//商品总数量
@@ -54,7 +60,11 @@ let store = new Vuex.Store({
 				state.carShow = true;
 			}
 
-			console.log(JSON.stringify(state.carPanelData,null,4))
+			state.ball.show = true;//小球显示
+			state.ball.img_src = data.ali_image;//小球中的图片为当前选择的商品图片
+			state.ball.el = event.path[0];
+			//console.log(event)
+			//console.log(JSON.stringify(state.carPanelData,null,4))
 		},
 		
 		//删除商品
