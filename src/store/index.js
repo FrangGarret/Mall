@@ -5,7 +5,9 @@ Vue.use(Vuex);
 let store = new Vuex.Store({
 	state: {
 		carPanelData: [],
-		maxOff:false
+		maxOff:false,//模态框是否显示
+		carShow:false,//购物车详情弹出框是否显示
+		carTimer:null
 	},
 	getters:{
 		//商品总数量
@@ -30,17 +32,18 @@ let store = new Vuex.Store({
 		//添加商品到购物车
 		addCarPanelDate(state, data) {
 			let bOff = true;
-
 			state.carPanelData.forEach((items) => {
 				if(items.sku_id === data.sku_id) {
 					items.count++;
 					bOff = false;
-					
 					//判断是否超过最大购买量
 					if(items.count > items.limit_num){
 						items.count--
 						state.maxOff = true
+						return 
 					}
+					state.carShow = true;	
+
 				}
 			})
 
@@ -48,6 +51,7 @@ let store = new Vuex.Store({
 				let goodsData = data;
 				Vue.set(goodsData, 'count', 1);
 				state.carPanelData.push(goodsData)
+				state.carShow = true;
 			}
 
 			console.log(JSON.stringify(state.carPanelData,null,4))
@@ -66,8 +70,19 @@ let store = new Vuex.Store({
 		//关闭弹出框
 		closePrompt(state){
 			state.maxOff = false; 
+		},
+		// 显示购物车
+		showCar(state){
+			clearTimeout(state.carTimer)
+			state.carShow = true;
+		},
+		//隐藏购物车
+		hideCar(state){
+			state.carTimer = setTimeout( () =>{
+				state.carShow = false;
+			},300)
+			
 		}
-		
 	}
 })
 

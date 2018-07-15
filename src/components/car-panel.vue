@@ -1,11 +1,11 @@
 <template>
-	<li class="nav-cart">
+	<li class="nav-cart" @mouseover="showCarHandle" @mouseout="hideCarHandle">
 		<a href="javascript:;">购物车</a>
 		<!--根据class改变颜色-->
 		<span class="cart-empty-num " :class="{'cart-num':totleCount>0}">
 			<i>{{totleCount}}</i>
 		</span>
-		<div class="nav-cart-wrapper">
+		<div class="nav-cart-wrapper" v-if="carShow">
 			<div class="nav-cart-list">
 				<div class="empty" v-if="carPanelData.length<1">
 					<h3>购物车为空</h3>
@@ -59,6 +59,17 @@
 				</div>
 			</div>
 		</div>
+
+		<transition name="ball"
+			v-on:before-enter = 'beforeEnter'
+			v-on:enter = 'enter'
+			v-on:after-enter = 'afterEnter'
+			v-bind:css="true"
+		>
+			<div class="addcart-mask">
+				<img class="mask-item" src="" alt="">
+			</div>
+		</transition>
 	</li>
 </template>
 
@@ -73,11 +84,29 @@
 			},
 			totlePrice(){
 				return this.$store.getters.totlePrice
+			},
+			carShow(){
+				return this.$store.state.carShow
 			}
 		},
 		methods:{
 			delCarPanel(id){
 				this.$store.commit('delCarPanelDate',id)
+			},
+			showCarHandle(){
+				this.$store.commit('showCar')
+			},
+			hideCarHandle(){
+				this.$store.commit('hideCar')
+			},
+			beforeEnter(){
+
+			},
+			enter(){
+
+			},
+			afterEnter(){
+				
 			}
 		}
 	}
