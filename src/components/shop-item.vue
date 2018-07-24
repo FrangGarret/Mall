@@ -54,7 +54,8 @@
 				this.tableIndex = index
 			},
 			addCarPanelHandle(data){
-				this.$store.commit('addCarPanelDate',data)
+				this.$store.commit('addCarPanelDate',data);
+
 			}
 		}
 	}

@@ -29,7 +29,7 @@
 	
 						<ul>
 	
-							<li class="clear" v-for="item,index in carPanelData">
+							<li class="clear" v-for="(item,index) in carPanelData">
 	
 								<div class="cart-item js-cart-item cart-item-sell">
 	
